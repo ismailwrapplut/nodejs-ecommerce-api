@@ -3,7 +3,7 @@ import dbConnect from "../config/dbConnect.js";
 import dotenv from "dotenv";
 import userRoutes from "../routes/usersRoute.js";
 import Stripe from "stripe";
-
+import cors from "cors";
 import { globalErrhandler, notFound } from "../middlewares/globalErrHandler.js";
 import productsRouter from "../routes/productsRoute.js";
 import categoriesRouter from "../routes/categoriesRouter.js";
@@ -17,6 +17,8 @@ dotenv.config();
 
 dbConnect();
 const app = express();
+//cors
+app.use(cors());
 const stripe = new Stripe(process.env.STRIPE_KEY);
 
 const endpointSecret =
